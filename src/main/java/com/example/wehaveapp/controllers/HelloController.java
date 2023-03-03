@@ -14,6 +14,7 @@ import javafx.scene.web.WebView;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class HelloController {
     @FXML
@@ -29,29 +30,72 @@ public class HelloController {
     private Label newText;
 
 
+
     @FXML
-    protected void onHelloButtonClick() {
-        String googleUrl = "https://www.google.com";
-        welcomeText.setText("Let's get started");
-        loadExampleURL(googleUrl);
+    private void handleButtonAction(ActionEvent event) {
+        // Load the HTML file
+        try {
+            URL url = getClass().getResource("/static/html/webview.html");
+//            webView.getEngine().load(url.toString());
+            openWebview();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void openWebview() {
+        WebView webView = new WebView();
+        webView.getEngine().load(getClass().getResource("/static/html/webview.html").toString());
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(webView));
+        stage.show();
     }
 
 
-    @FXML
-    protected void initialize() {
-
-        File file = new File("/static/html/webview.html");
-        WebEngine webEngine1 = webView.getEngine();
-        webEngine1.load(file.toURI().toString());
-
-    }
+//    @FXML
+//    protected void onHelloButtonClick() {
+//        String googleUrl = "https://www.google.com";
+//        welcomeText.setText("Let's get started");
+//        loadExampleURL(googleUrl);
+//    }
 
 
-    @FXML
-    public void loadExampleURL(String url) {
+//    @FXML
+//    protected void initialize() {
+//
+//        File file = new File("/static/html/webview.html");
+//        webEngine = webView.getEngine();
+//        webEngine.load(file.toURI().toString());
+//
+//    }
 
-        webView.getEngine().load(url);
-    }
+//    public void onHelloButtonClick(ActionEvent event) {
+//        // Create a new WebView and load the HTML file
+//        WebView webView = new WebView();
+//        webView.getEngine().load(getClass().getResource("/static/html/webview.html").toExternalForm());
+//
+//        // Create a new Stage to display the WebView
+//        Stage stage = new Stage();
+//        stage.setScene(new Scene(webView, 800, 600));
+//        stage.show();
+//    }
+
+
+//    @FXML
+//        public void initialize() {
+//            webView.getEngine().load(getClass().getResource("/static/html/webview.html").toExternalForm());
+//        }
+
+
+
+
+//    @FXML
+//    public void loadExampleURL(String url) {
+//
+//        webView.getEngine().load(url);
+//    }
 
 //    private void goToNewView(ActionEvent event) throws IOException {
 //        Parent newViewParent = FXMLLoader.load(getClass().getResource("NewView.fxml"));

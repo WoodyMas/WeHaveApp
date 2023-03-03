@@ -2,6 +2,7 @@
 .idea/
 keys.js
 Keys.java
+application.properties
 
 # Compiled class file
 *.class
