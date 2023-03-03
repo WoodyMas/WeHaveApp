@@ -1,4 +1,4 @@
-package com.example.wehaveapp;
+package com.example.wehaveapp.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,24 +31,26 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
+        String googleUrl = "https://www.google.com";
         welcomeText.setText("Let's get started");
-        loadExampleURL();
+        loadExampleURL(googleUrl);
     }
 
 
     @FXML
     protected void initialize() {
-//        newText.setText(("See this test"));
-        WebEngine webEngine1 = webView.getEngine();
+
         File file = new File("/static/html/webview.html");
+        WebEngine webEngine1 = webView.getEngine();
         webEngine1.load(file.toURI().toString());
 
     }
 
 
     @FXML
-    private void loadExampleURL() {
-        webView.getEngine().load("https://www.google.com");
+    public void loadExampleURL(String url) {
+
+        webView.getEngine().load(url);
     }
 
 //    private void goToNewView(ActionEvent event) throws IOException {
