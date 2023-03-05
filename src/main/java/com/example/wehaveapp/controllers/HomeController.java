@@ -1,26 +1,38 @@
 package com.example.wehaveapp.controllers;
+import com.example.wehaveapp.WeHaveApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class HomeController {
-    @FXML
-    private Button registerButton;
+
+    private WeHaveApplication app;
 
     @FXML
-    private void userRegistration(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/static/fxml/create-account.fxml"));
-        loader.setController(new UserController());
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) registerButton.getScene().getWindow();
-        stage.setScene(scene);
+    private Label welcomeMessageLabel;
+
+    @FXML
+    private Button logoutButton;
+
+    @FXML
+    private void initialize() {
+        // initialize the controller
+    }
+
+    @FXML
+    private void handleLogoutButtonAction(ActionEvent event) {
+        // handle logout button action
+    }
+
+    public void setApp(WeHaveApplication app) {
+        this.app = app;
     }
 }
 

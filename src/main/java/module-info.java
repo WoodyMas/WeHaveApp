@@ -6,6 +6,8 @@ module com.example.wehaveapp {
     requires javafx.web;
     requires persistence.api;
     requires spring.data.jpa;
+    requires spring.context;
+    requires spring.security.crypto;
 
     opens com.example.wehaveapp to javafx.fxml;
     exports com.example.wehaveapp;
